@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import kotlinx.android.synthetic.main.activity_main.*
 import java.util.*
+import kotlin.math.min
 
 class MainActivity : AppCompatActivity() {
     var hourPicked : Int? = null
@@ -12,6 +13,10 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        val saveData = SaveData(applicationContext)
+        txtView_alarmTime.text = "${saveData.getHour()} : ${saveData.getMinute()}"
+
 
         btn_setAlarm.setOnClickListener {
             showPopup()
@@ -32,7 +37,8 @@ class MainActivity : AppCompatActivity() {
         txtView_alarmTime.text = "$nw_hours : $nw_mins"
 
         val saveData = SaveData(applicationContext)
-        saveData.setAlarm(hours, minutes)
+        saveData.saveXMLFile(hours, minutes)
+        saveData.setAlarm()
 
     }
 

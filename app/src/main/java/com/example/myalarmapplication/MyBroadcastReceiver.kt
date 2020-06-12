@@ -17,6 +17,11 @@ class MyBroadcastReceiver : BroadcastReceiver() {
 
             Toast.makeText(context!!.applicationContext, msg, Toast.LENGTH_SHORT).show()
         }
+        else if(intent!!.action.equals("android.intent.action.BOOT_COMPLETED")){
+            //if the phone restarted, set again the alarm previously requested
+            val saveData = SaveData(context!!.applicationContext)
+            saveData.setAlarm()
+        }
     }
 
 }
