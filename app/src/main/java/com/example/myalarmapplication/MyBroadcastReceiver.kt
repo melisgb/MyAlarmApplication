@@ -13,9 +13,13 @@ class MyBroadcastReceiver : BroadcastReceiver() {
         var bundle = intent!!.extras
         val msg = bundle!!.getString("message")
         Log.d("Receiving Broadcast", intent!!.action)
-        if(intent!!.action.equals("com.ggonzales.alarmsetting")){
 
+        if(intent!!.action.equals("com.ggonzales.alarmsetting")){
             Toast.makeText(context!!.applicationContext, msg, Toast.LENGTH_SHORT).show()
+            val notifyMe =  NotificationHelper(context)
+            notifyMe.notify(1,
+                notifyMe!!.getNotification("First", "Alarm set", "first"))
+
         }
         else if(intent!!.action.equals("android.intent.action.BOOT_COMPLETED")){
             //if the phone restarted, set again the alarm previously requested
