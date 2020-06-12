@@ -16,23 +16,6 @@ class MainActivity : AppCompatActivity() {
         btn_setAlarm.setOnClickListener {
             showPopup()
         }
-
-        val cal = Calendar.getInstance()
-        val timeSetListener = TimePickerDialog.OnTimeSetListener{ timePicker_alarmTime, hour, minute ->
-            cal.set(Calendar.HOUR_OF_DAY, hour)
-            cal.set(Calendar.MINUTE, minute)
-            hourPicked = hour
-            minPicked = minute
-
-            setTime(hourPicked!!, minPicked!!)
-        }
-
-        btn_configureClock.setOnClickListener {
-            val timePicker = TimePickerDialog(this, timeSetListener,
-                cal.get(Calendar.HOUR_OF_DAY), cal.get(Calendar.MINUTE), true).show()
-
-        }
-
     }
 
     fun showPopup() {
