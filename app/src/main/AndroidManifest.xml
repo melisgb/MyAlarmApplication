@@ -16,6 +16,14 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <receiver android:name=".MyBroadcastReceiver">
+            <intent-filter>
+                <action android:name="com.ggonzales.alarmsetting"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+                <!--Everytime an action called broadcast occurs it will call my class MyBroadcastReceiver-->
+        </receiver>
     </application>
 
 </manifest>

@@ -30,6 +30,10 @@ class MainActivity : AppCompatActivity() {
         val nw_mins = fx_digit(minutes)
 
         txtView_alarmTime.text = "$nw_hours : $nw_mins"
+
+        val saveData = SaveData(applicationContext)
+        saveData.setAlarm(hours, minutes)
+
     }
 
 
